@@ -1,0 +1,25 @@
+{
+	"information": {
+		"VATableEditor-CtrlDefinitions": "v2",
+		"creationDate": "10Dec2020 12:50",
+		"createdBy": "porjoo",
+		"lastModifDate": "10Dec2020 12:50",
+		"lastModifBy": "porjoo",
+		"TrackingTblLib": "public",
+		"TrackingTable": "VATableEditor_Changes",
+		"TrackChanges": true,
+		"defaultBehaviour": "editable",
+		"ValidateTable": true,
+		"OnSaveMode": 1,
+		"RecoverUnSavedChanges": 1
+	},
+	"reports": {
+		"52b5eca5-77af-42c2-93b4-fab95102fd9e": "ReportsDefinitions/DQ_AutoProfiling_Rep1@public.ctrl.json",
+		"20a56311-874b-450a-a679-4963b7a1b419": "ReportsDefinitions/Report 1.ctrl.json",
+		"cc761f02-2b58-43f0-a73c-c7fb0767c2ad": "ReportsDefinitions/Report 1.ctrl.json",
+		"698211b6-41ca-48fe-8cb5-1d287dbe1592": "ReportsDefinitions/BeManuf.json",
+		"b81818ed-ef37-4999-b19e-aaa1bde4a52a": "ReportsDefinitions/DDC_Tests_(1).ctrl.json",
+		"2ac1a741-2bb5-4f73-902a-dfadf5f8a00d": "ReportsDefinitions/ReportEdit_YsY.json"
+	}
+}
+

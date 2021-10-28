@@ -1,0 +1,82 @@
+{
+	"information": {
+		"VATableEditor-CtrlDefinitions": "v7",
+		"creationDate": "01Jun2021 12:50",
+		"createdBy": "porjoo",
+		"lastModifDate": "11Oct2021 12:00",
+		"lastModifBy": "porjoo",
+		"TrackingTblLib": "public",
+		"TrackingTable": "VATableEditor_Changes",
+		"TrackChanges": true,
+		"defaultBehaviour": "editable",
+		"ValidateTable": false,
+		"OnSaveMode": 1,
+		"ReopenReportOnTableChanges": false,
+		"OpenInFullScreen": false,
+		"RecoverUnSavedChanges": 1,
+		"GetReasonForChanges": 0
+	},
+	"validUsers": {
+		"admins": {
+			"groups": [
+				"SASAdministrators",
+				"VATableEditorAdmins"
+			],
+			"users": [
+				"nicolas",
+				"jinxin"
+			]
+		},
+		"groups": [
+			"SASAdministrators",
+			"VATableEditorAdmins"
+		],
+		"users": [
+			"nicolas",
+			"jinxin"
+		]
+	},
+	"externalServices": [
+		{
+			"execMode": "foreground",
+			"name": "JobExec-JustShowingParameters",
+			"label": "<i class='fas fa-receipt'></i>&ensp;JustShowingParameters&nbsp;",
+			"ViyaService": "SASJobExecution",
+			"service": {
+				"url": "/SASJobExecution/",
+				"method": "POST",
+				"async": false,
+				"headers": {
+					"Accept": "application/json"
+				},
+				"data": {
+					"_program": "/Public/VATableEditor/Examples/SASJobExec/JustShowingParameters",
+					"_continent": "Europe",
+					"_country": "Portugal",
+					"_prodline": "getColumnValue(Product)",
+					"_output_type": "html",
+					"_csrf": "$CSRF$"
+				}
+			}
+		},
+		{
+			"execMode": "foreground",
+			"name": "Numbers-API",
+			"label": "<i class='fas fa-calculator'></i>&ensp;Math Numbers&nbsp;",
+			"service": {
+				"url": "http://numbersapi.com/random/year",
+				"method": "GET",
+				"async": false,
+				"headers": {
+					"Accept": "*/*"
+				},
+				"data": {
+					"json": ""
+				}
+			}
+		}
+	],
+	"reports": {
+		"8f503198-9b82-477d-a7d4-c2d03e9b7d4d": "ReportsDefinitions/ReportG1G7.ctrl.json"
+	}
+}

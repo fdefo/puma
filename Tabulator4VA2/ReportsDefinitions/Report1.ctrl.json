@@ -1,0 +1,495 @@
+{
+	"crtlInfo": {
+		"version": 7,
+		"creationDate": "01Jun2021 12:50",
+		"createdBy": "porjoo",
+		"lastModifDate": "11Oct2021 12:50",
+		"lastModifBy": "porjoo"
+	},
+	"casServer": "cas-shared-default",
+	"reportID": [
+		"cc761f02-2b58-43f0-a73c-c7fb0767c2ad"
+	],
+	"defaultBehaviour": "editable",
+	"trackChanges": true,
+	"ValidateTable": false,
+	"OnSaveMode": 1,
+	"ReopenReportOnTableChanges": false,
+	"OpenInFullScreen": false,
+	"RecoverUnSavedChanges": 1,
+	"GetReasonForChanges": 10,
+	"validUsers": {
+		"groups": [
+			"SASAdministrators"
+		],
+		"users": [
+			"porjoo",
+			"sasdemo"
+		]
+	},
+	"modules": {
+		"cellChanges": true,
+		"history": true,
+		"saveChanges": true,
+		"save2Disk": true,
+		"addRows": true,
+		"deleteRows": true,
+		"updtColVal": true,
+		"export": true,
+		"download": true,
+		"downloadCSV": true,
+		"downloadPDF": true,
+		"downloadJSON": true,
+		"downloadXLSX": true,
+		"downloadHTML": true,
+		"printing": true,
+		"clipboard": true,
+		"calculator": true,
+		"logger": true,
+		"aggregation": true,
+		"recoverChanges": true,
+		"callExtServices": true
+	},
+	"notMappedColumnsDefaults": {
+		"name": "unknown",
+		"frozen": null,
+		"editable": false,
+		"visible": false,
+		"onDownload": true,
+		"onPrint": true,
+		"onClipboard": true,
+		"calculator": true,
+		"formula": null,
+		"validation": {
+			"required": false,
+			"useFormula": null,
+			"default": null,
+			"min": null,
+			"max": null,
+			"minLength": null,
+			"maxLength": null,
+			"in": null,
+			"starts": null,
+			"ends": null,
+			"regex": null
+		},
+		"aggregation": {
+			"topCalc": {
+				"method": null,
+				"precision": null,
+				"label": null
+			},
+			"bottomCalc": {
+				"method": null,
+				"precision": null,
+				"label": null
+			}
+		}
+	},
+	"externalServices": [
+		{
+			"execMode": "background",
+			"name": "JobExec-API-ProcPrintCars",
+			"label": "<i class='fas fa-receipt'></i>&ensp;Print Cars&nbsp;",
+			"ViyaService": "jobExecution",
+			"service": {
+				"url": "/jobExecution/jobs",
+				"method": "POST",
+				"async": false,
+				"timeout": 1000,
+				"headers": {
+					"Content-Type": "application/vnd.sas.job.execution.job.request+json",
+					"Accept": "application/vnd.sas.job.execution.job+json"
+				},
+				"data": {
+					"jobDefinitionUri": "/jobDefinitions/definitions/0f471f27-6f1e-4e24-9fd0-d759f6ba6e42",
+					"arguments": {
+						"_contextName": "SAS Job Execution compute context",
+						"_action": "execute",
+						"_csrf": "$CSRF$"
+					}
+				}
+			},
+			"refreshVA": {
+				"waitBefore": 5000,
+				"visualElems": [
+					"vi1518",
+					"ve5653",
+					"ve1498"
+				],
+				"filterParams": [
+					"p_var1",
+					"p_var2",
+					"p_var3"
+				]
+			}
+		},
+		{
+			"execMode": "background",
+			"name": "Numbers-API-2",
+			"label": "<i class='fas fa-calculator'></i>&ensp;Math Numbers&nbsp;",
+			"service": {
+				"url": "http://numbersapi.com/random/year",
+				"method": "GET",
+				"async": false,
+				"headers": {
+					"Accept": "*/*"
+				},
+				"data": {
+					"json": ""
+				}
+			}
+		}
+	],
+	"dataSources": [
+		{
+			"casLib": "public",
+			"casTable": "CARS",
+			"validateOnLoad": true,
+			"trackChanges": true,
+			"OnSaveMode": 1,
+			"RecoverUnSavedChanges": 1,
+			"GetReasonForChanges": 10,
+			"columnDefaults": {
+				"primaryKey": false,
+				"editable": true,
+				"visible": true,
+				"frozen": null,
+				"onDownload": true,
+				"onPrint": true,
+				"onClipboard": true,
+				"calculator": true,
+				"formula": null,
+				"validation": {
+					"required": true,
+					"useFormula": null,
+					"default": null,
+					"min": null,
+					"max": null,
+					"minLength": null,
+					"maxLength": null,
+					"in": null,
+					"starts": null,
+					"ends": null,
+					"regex": null
+				},
+				"aggregation": {
+					"topCalc": {
+						"method": null,
+						"precision": null,
+						"label": null
+					},
+					"bottomCalc": {
+						"method": null,
+						"precision": null,
+						"label": null
+					}
+				}
+			},
+			"authorizations": [
+				{
+					"groups": [
+						"SASAdministrators"
+					],
+					"users": [
+						"porjoo",
+						"sasdemo"
+					],
+					"grants": "1111111"
+				}
+			],
+			"columns": [
+				{
+					"name": "Unique_ID",
+					"visible": true,
+					"primaryKey": true,
+					"frozen": true
+				},
+				{
+					"name": "Make"
+				},
+				{
+					"name": "Type"
+				},
+				{
+					"name": "Origin"
+				},
+				{
+					"name": "DriveTrain"
+				},
+				{
+					"name": "Model",
+					"editable": false,
+					"headerFilter": true
+				},
+				{
+					"name": "MSRP"
+				},
+				{
+					"name": "Invoice"
+				},
+				{
+					"name": "EngineSize"
+				},
+				{
+					"name": "Cylinders"
+				},
+				{
+					"name": "Horsepower"
+				},
+				{
+					"name": "MPG_City",
+					"aggregation": {
+						"bottomCalc": {
+							"method": "avg",
+							"precision": 5,
+							"label": "<i class='fas fa-exchange-alt'></i>&nbspAvg:&nbsp"
+						}
+					}
+				},
+				{
+					"name": "MPG_Highway",
+					"aggregation": {
+						"bottomCalc": {
+							"method": "avg",
+							"precision": 5,
+							"label": "<i class='fas fa-exchange-alt'></i>&nbspAvg:&nbsp"
+						}
+					}
+				},
+				{
+					"name": "Weight"
+				},
+				{
+					"name": "Wheelbase"
+				},
+				{
+					"name": "Length"
+				}
+			]
+		},
+		{
+			"casLib": "public",
+			"casTable": "SNACKS",
+			"validateOnLoad": true,
+			"trackChanges": true,
+			"OnSaveMode": 2,
+			"RecoverUnSavedChanges": 1,
+			"GetReasonForChanges": 0,
+			"columnDefaults": {
+				"primaryKey": false,
+				"editable": true,
+				"visible": true,
+				"frozen": null,
+				"onDownload": true,
+				"onPrint": true,
+				"onClipboard": true,
+				"calculator": true,
+				"validation": {
+					"required": true,
+					"useFormula": null,
+					"default": null,
+					"min": null,
+					"max": null,
+					"minLength": null,
+					"maxLength": null,
+					"in": null,
+					"starts": null,
+					"ends": null,
+					"regex": null
+				},
+				"aggregation": {
+					"topCalc": {
+						"method": null,
+						"precision": null,
+						"label": null
+					},
+					"bottomCalc": {
+						"method": null,
+						"precision": null,
+						"label": null
+					}
+				}
+			},
+			"onSaveExtServices": [
+				{
+					"saveMoment": 1,
+					"services": [
+						"JobExec-API-ProcPrintCars"
+					]
+				}
+			],
+			"ctxMenuExtServices": [
+				"JobExec-API-ProcPrintCars",
+				"JobExec-JustShowingParameters",
+				"Numbers-API"
+			],
+			"authorizations": [
+				{
+					"groups": [
+						"SASAdministrators"
+					],
+					"users": [
+						"porjoo",
+						"sasdemo"
+					],
+					"grants": "1111111"
+				}
+			],
+			"columns": [
+				{
+					"name": "Frequency",
+					"visible": true,
+					"aggregation": {
+						"bottomCalc": {
+							"method": "count",
+							"label": "<i class='fas fa-hashtag'></i>&nbspCount:&nbsp"
+						}
+					}
+				},
+				{
+					"name": "Advertised",
+					"headerFilter": true,
+					"editorSelect": {
+						"from": "list",
+						"values": [
+							0,
+							3,
+							1,
+							2
+						],
+						"sortValuesList": "asc",
+						"useOnHeaderFilter": true
+					},
+					"validation": {
+						"default": 0,
+						"min": 0,
+						"max": 3,
+						"regex": "^[0-3]$"
+					}
+				},
+				{
+					"name": "Date",
+					"validation": {
+						"default": {
+							"date": "10/01/2020",
+							"format": "DD/MM/YYYY"
+						},
+						"min": "01/01/2002",
+						"max": "31/12/2019"
+					},
+					"aggregation": {
+						"topCalc": {
+							"method": "min",
+							"label": "<i class='fas fa-arrow-alt-circle-down'></i>&nbspMin:&nbsp"
+						},
+						"bottomCalc": {
+							"method": "max",
+							"label": "<i class='fas fa-arrow-alt-circle-up'></i>&nbspMax:&nbsp"
+						}
+					}
+				},
+				{
+					"name": "Holiday",
+					"headerFilter": true,
+					"editorSelect": {
+						"from": "list",
+						"values": {
+							"0": "No",
+							"1": "Yes",
+							"2": "Maybe"
+						},
+						"sortValuesList": "asc",
+						"defaultValue": "No",
+						"useOnHeaderFilter": true
+					},
+					"validation": {
+						"default": 0,
+						"min": 0,
+						"max": 2,
+						"regex": "^[0-2]$"
+					}
+				},
+				{
+					"name": "Product",
+					"headerFilter": true,
+					"editorSelect": {
+						"from": "table",
+						"values": {
+							"casLib": "public",
+							"casTable": "SNACKS",
+							"tableColumn": "Product",
+							"maxItems": 100
+						},
+						"sortValuesList": "asc",
+						"useOnHeaderFilter": true
+					},
+					"validation": {
+						"minLength": 1,
+						"maxLength": 45
+					},
+					"aggregation": {
+						"bottomCalc": {
+							"method": "countUnique",
+							"precision": 3,
+							"label": "<i class='fas fa-hashtag'></i>&nbspUnique Values:&nbsp"
+						}
+					}
+				},
+				{
+					"name": "Price",
+					"formula": "lookup(Product,'public','SNACKS_LOOKUP','Product','Price')",
+					"editorSelect": {
+						"from": "column",
+						"values": {
+							"name": [
+								"Product"
+							],
+							"useFormula": true
+						}
+					},
+					"validation": {
+						"useFormula": true
+					},
+					"aggregation": {
+						"topCalc": {
+							"method": "std",
+							"precision": 5,
+							"label": "<i class='fas fa-calculator'></i>&nbspStd:&nbsp"
+						},
+						"bottomCalc": {
+							"method": "avg",
+							"precision": 5,
+							"label": "<i class='fas fa-exchange-alt'></i>&nbspAvg:&nbsp"
+						}
+					}
+				},
+				{
+					"name": "Unique_ID",
+					"primaryKey": true,
+					"frozen": true,
+					"visible": true
+				},
+				{
+					"name": "QtySold",
+					"headerFilter": true,
+					"validation": {
+						"default": 1,
+						"min": 0,
+						"max": 15
+					},
+					"aggregation": {
+						"topCalc": {
+							"method": "var",
+							"precision": 1
+						},
+						"bottomCalc": {
+							"method": "avg",
+							"precision": 1
+						}
+					}
+				}
+			]
+		}
+	]
+}

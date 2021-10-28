@@ -1,0 +1,490 @@
+{
+    "crtlInfo": {
+        "version": 1,
+        "creationDate": "28JUL2021 12:50",
+        "createdBy": "porjoo",
+        "lastModifDate": "28JUL2021 12:50",
+        "lastModifBy": "porjoo"
+    },
+    "casServer": "cas-shared-default",
+    "reportID": [
+        "fd2d4456-60c4-431d-aa0a-fe589f608eae"
+    ],
+    "defaultBehaviour": "editable",
+    "tableLayout": "fitDataStretch",
+    "trackChanges": true,
+    "ValidateTable": false,
+    "OnSaveMode": 2,
+    "RecoverUnSavedChanges": 1,
+    "GetReasonForChanges": 0,
+    "validUsers": {
+        "groups": [
+            "PTPowerUsers",
+            "PTProjectShare",
+            "BEPowerUsers",
+            "BEProjectShare",
+            "NLPowerUsers",
+            "NLProjectShare",
+            "FRPowerUsers",
+            "FRProjectShare",
+            "SPPowerUsers",
+            "SPProjectShare",
+            "SASAdministrators",
+            "ukipowerusers",
+            "ukisupportusers"
+        ],
+        "users": [
+            "porjoo",
+            "stest4",
+            "snlref",
+            "snlysy",
+            "sasdemo",
+            "sukdhs",
+            "frajoz",
+            "frascb",
+            "sbxjej",
+            "snlbad"
+        ]
+    },
+    "modules": {
+        "cellChanges": true,
+        "history": true,
+        "saveChanges": true,
+        "save2Disk": true,
+        "addRows": true,
+        "deleteRows": true,
+        "updtColVal": true,
+        "export": true,
+        "download": true,
+        "downloadCSV": true,
+        "downloadPDF": true,
+        "downloadJSON": true,
+        "downloadXLSX": true,
+        "downloadHTML": true,
+        "printing": true,
+        "clipboard": true,
+        "calculator": true,
+        "logger": true,
+        "aggregation": true,
+        "recoverChanges": true,
+        "callExtServices": true
+    },
+    "notMappedColumnsDefaults": {
+        "name": "unknown",
+        "frozen": null,
+        "editable": false,
+        "visible": false,
+        "onDownload": true,
+        "onPrint": true,
+        "onClipboard": true,
+        "calculator": true,
+        "formula": null,
+        "headerFilter": null,
+        "editorSelect": null,
+        "presentAs": null,
+        "validation": {
+            "required": false,
+            "unique": false,
+            "useFormula": null,
+            "default": null,
+            "min": null,
+            "max": null,
+            "minLength": null,
+            "maxLength": null,
+            "in": null,
+            "starts": null,
+            "ends": null,
+            "regex": null
+        },
+        "aggregation": {
+            "topCalc": {
+                "method": null,
+                "precision": null,
+                "label": null
+            },
+            "bottomCalc": {
+                "method": null,
+                "precision": null,
+                "label": null
+            }
+        }
+    },
+    "externalServices": [
+        {
+            "execMode": "foreground",
+            "name": "Numbers-API",
+            "label": "<i class='fas fa-calculator'></i>&ensp;Math Numbers&nbsp;",
+            "service": {
+                "url": "http://numbersapi.com/random/year",
+                "method": "GET",
+                "async": false,
+                "headers": {
+                    "Accept": "*/*"
+                },
+                "data": {
+                    "json": ""
+                }
+            }
+        },
+        {
+            "execMode": "background",
+            "name": "Numbers-API-2",
+            "label": "<i class='fas fa-calculator'></i>&ensp;Math Numbers&nbsp;",
+            "service": {
+                "url": "http://numbersapi.com/random/year",
+                "method": "GET",
+                "async": false,
+                "headers": {
+                    "Accept": "*/*"
+                },
+                "data": {
+                    "json": ""
+                }
+            }
+        }
+    ],
+    "dataSources": [
+        {
+            "casLib": "ptclib03",
+            "casTable": "IMDB_TITLES_BASICS_SHORT",
+            "validateOnLoad": true,
+            "trackChanges": true,
+            "OnSaveMode": 1,
+            "RecoverUnSavedChanges": 1,
+            "columnDefaults": {
+                "primaryKey": false,
+                "editable": true,
+                "visible": true,
+                "frozen": null,
+                "onDownload": true,
+                "onPrint": true,
+                "onClipboard": true,
+                "calculator": true,
+                "presentAs": null,
+                "validation": {
+                    "required": true,
+                    "useFormula": null,
+                    "default": null,
+                    "min": null,
+                    "max": null,
+                    "minLength": null,
+                    "maxLength": null,
+                    "in": null,
+                    "starts": null,
+                    "ends": null,
+                    "regex": null
+                },
+                "aggregation": {
+                    "topCalc": {
+                        "method": null,
+                        "precision": null,
+                        "label": null
+                    },
+                    "bottomCalc": {
+                        "method": null,
+                        "precision": null,
+                        "label": null
+                    }
+                }
+            },
+            "onSaveExtServices": [
+                {
+                    "saveMoment": 1,
+                    "services": [
+                        "JobExec-API-ProcPrintCars"
+                    ]
+                }
+            ],
+            "ctxMenuExtServices": [
+                "Numbers-API"
+            ],
+            "authorizations": [
+                {
+                    "groups": [
+                        "SASAdministrators"
+                    ],
+                    "users": [
+                        "porjoo",
+                        "sasdemo"
+                    ],
+                    "grants": "SPEIUDX"
+                },
+                {
+                    "users": [
+                        "sasdemo",
+                        "stest4"
+                    ],
+                    "grants": "S-E---X"
+                }
+            ],
+            "columns": [
+                {
+                    "name": "tconst",
+                    "primaryKey": true,
+                    "frozen": true,
+                    "visible": true
+                },
+                {
+                    "name": "titleType",
+                    "headerFilter": true
+                },
+                {
+                    "name": "primaryTitle",
+                    "headerFilter": true
+                },
+                {
+                    "name": "originalTitle",
+                    "headerFilter": true,
+                    "editable": false
+                },
+                {
+                    "name": "genres",
+                    "headerFilter": true
+                },
+                {
+                    "name": "startYear",
+                    "headerFilter": true,
+                    "validation": {
+                        "minLength": 4,
+                        "maxLength": 4,
+                        "min": 1800,
+                        "max": 2100
+                    },
+                    "aggregation": {
+                        "topCalc": {
+                            "method": "max",
+                            "label": "<i class='fas fa-arrow-alt-circle-up'></i>&nbspMax:&nbsp"
+                        },
+                        "bottomCalc": {
+                            "method": "min",
+                            "label": "<i class='fas fa-arrow-alt-circle-down'></i>&nbspMin:&nbsp"
+                        }
+                    }
+                },
+                {
+                    "name": "endYear",
+                    "headerFilter": true,
+                    "validation": {
+                        "minLength": 4,
+                        "maxLength": 4,
+                        "min": 1800,
+                        "max": 2100
+                    }
+                },
+                {
+                    "name": "_runtimeMinutes_",
+                    "headerFilter": true,
+                    "presentAs": {
+                        "type": "progressBar",
+                        "color": [
+                            "green",
+                            "orange",
+                            "red"
+                        ]
+                    },
+                    "validation": {
+                        "default": 0,
+                        "min": 0,
+                        "max": 100
+                    },
+                    "aggregation": {
+                        "bottomCalc": {
+                            "method": "avg",
+                            "precision": 5,
+                            "label": "<i class='fas fa-exchange-alt'></i>&nbspAvg:&nbsp"
+                        }
+                    }
+                },
+                {
+                    "name": "runtimeMinutes_",
+                    "headerFilter": true,
+                    "presentAs": {
+                        "type": "progressBar",
+                        "color": [
+                            "green",
+                            "orange",
+                            "red"
+                        ],
+                        "editor": "numeric"
+                    },
+                    "editorSelect": {
+                        "from": "list",
+                        "values": [
+                            0,
+                            5,
+                            10,
+                            15,
+                            20,
+                            25,
+                            30,
+                            35,
+                            40,
+                            45,
+                            50,
+                            55,
+                            60,
+                            65,
+                            70,
+                            75,
+                            80,
+                            85,
+                            90,
+                            95,
+                            100
+                        ],
+                        "sortValuesList": "asc",
+                        "useOnHeaderFilter": true
+                    },
+                    "validation": {
+                        "default": 0,
+                        "min": 0,
+                        "max": 100
+                    },
+                    "aggregation": {
+                        "bottomCalc": {
+                            "method": "avg",
+                            "precision": 5,
+                            "label": "<i class='fas fa-exchange-alt'></i>&nbspAvg:&nbsp"
+                        }
+                    }
+                },
+                {
+                    "name": "_runtimeMinutes",
+                    "headerFilter": true,
+                    "presentAs": {
+                        "type": "progressBar",
+                        "color": [
+                            "hsl(0, 50%, 50%)",
+                            "hsl(30, 50%, 50%)",
+                            "hsl(60, 50%, 50%)",
+                            "hsl(90, 50%, 50%)",
+                            "hsl(100, 50%, 50%)"
+                        ],
+                        "editor": "numeric"
+                    },
+                    "validation": {
+                        "default": 0,
+                        "min": 0,
+                        "max": 100
+                    },
+                    "aggregation": {
+                        "bottomCalc": {
+                            "method": "avg",
+                            "precision": 5,
+                            "label": "<i class='fas fa-exchange-alt'></i>&nbspAvg:&nbsp"
+                        }
+                    }
+                },
+                {
+                    "name": "runtimeMinutes",
+                    "headerFilter": true,
+                    "presentAs": {
+                        "type": "progressBar",
+                        "color": [
+                            "hsl(0, 50%, 50%)",
+                            "hsl(30, 50%, 50%)",
+                            "hsl(60, 50%, 50%)",
+                            "hsl(90, 50%, 50%)",
+                            "hsl(100, 50%, 50%)"
+                        ]
+                    },
+                    "validation": {
+                        "default": 0,
+                        "min": 0,
+                        "max": 100
+                    },
+                    "aggregation": {
+                        "bottomCalc": {
+                            "method": "avg",
+                            "precision": 5,
+                            "label": "<i class='fas fa-exchange-alt'></i>&nbspAvg:&nbsp"
+                        }
+                    }
+                },
+                {
+                    "name": "_isAdult",
+                    "headerFilter": true,
+                    "presentAs": {
+                        "type": "checkbox",
+                        "showOnly": "tick"
+                    },
+                    "editorSelect": {
+                        "from": "list",
+                        "values": {
+                            "0": "No",
+                            "1": "Yes"
+                        },
+                        "defaultValue": "No",
+                        "sortValuesList": "asc",
+                        "useOnHeaderFilter": true
+                    },
+                    "validation": {
+                        "default": 0,
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "name": "isAdult",
+                    "headerFilter": true,
+                    "presentAs": {
+                        "type": "checkbox",
+                        "showOnly": "tick"
+                    },
+                    "validation": {
+                        "default": 0,
+                        "min": 0,
+                        "max": 1
+                    }
+                },
+                {
+                    "name": "_rating",
+                    "presentAs": {
+                        "type": "stars",
+                        "editor": "numeric"
+                    },
+                    "validation": {
+                        "default": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "aggregation": {
+                        "bottomCalc": {
+                            "method": "avg",
+                            "precision": 5,
+                            "label": "<i class='fas fa-exchange-alt'></i>&nbspAvg:&nbsp"
+                        }
+                    }
+                },
+                {
+                    "name": "rating",
+                    "presentAs": {
+                        "type": "stars"
+                    },
+                    "validation": {
+                        "default": 0,
+                        "min": 0,
+                        "max": 5
+                    },
+                    "aggregation": {
+                        "bottomCalc": {
+                            "method": "avg",
+                            "precision": 5,
+                            "label": "<i class='fas fa-exchange-alt'></i>&nbspAvg:&nbsp"
+                        }
+                    }
+                },
+                {
+                    "name": "Frequency",
+                    "visible": true,
+                    "aggregation": {
+                        "bottomCalc": {
+                            "method": "count",
+                            "label": "<i class='fas fa-hashtag'></i>&nbspCount:&nbsp"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

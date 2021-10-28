@@ -1,0 +1,432 @@
+ @charset "UTF-8";
+:root {
+    --TabOnVA-column-non-editable: #fafafa;
+    --TabOnVA-button-txt-color : white;
+    --TabOnVA-button-bg-color : #517993;
+    --TabOnVA-button-bg-color-hover : #517994;
+    --TabOnVA-button-shd-color : #517993;
+    --TabOnVa-DlgBox-button-color: #005073;
+    --TabOnVa-DlgBox-main-color: #005074;
+    --TabOnVa-ConfBox-txt-color: #011f4b;
+    --TabOnVa-ConfBox-bg-color: #d8d8d8;
+    --TabOnVa-ConfBox-blue-color: #517993;
+    --TabOnVa-ConfBox-gray-color: #707070;
+    --TabOnVA-default-font: serif,'Avenir', 'Arial','Helvetica', sans-serif;
+}
+
+[TabOnVA-loading]
+{
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    vertical-align: middle;
+    --bg-color: var(--TabOnVa-DlgBox-button-color);
+}
+[TabOnVA-loading='ball-fade']
+{
+    position: relative;
+    width: 11px;
+    height: 11px;
+    -webkit-animation: 1.2s ball-fade infinite cubic-bezier(.78, .14, .15, .86) .2s;
+         -o-animation: 1.2s ball-fade infinite cubic-bezier(.78, .14, .15, .86) .2s;
+            animation: 1.2s ball-fade infinite cubic-bezier(.78, .14, .15, .86) .2s;
+    border-radius: 100%;
+    background-color:var(--bg-color);
+}
+[TabOnVA-loading='ball-fade']:before,
+[TabOnVA-loading='ball-fade']:after
+{
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    content: '';
+    -webkit-animation: 1.2s ball-fade infinite cubic-bezier(.78, .14, .15, .86);
+         -o-animation: 1.2s ball-fade infinite cubic-bezier(.78, .14, .15, .86);
+            animation: 1.2s ball-fade infinite cubic-bezier(.78, .14, .15, .86);
+
+    border-radius: 100%;
+    background-color: var(--bg-color);
+}
+[TabOnVA-loading='ball-fade']:before
+{
+    left: -15px;
+}
+[TabOnVA-loading='ball-fade']:after
+{
+    right: -15px;
+    -webkit-animation-delay: .4s;
+         -o-animation-delay: .4s;
+            animation-delay: .4s;
+}
+@-webkit-keyframes ball-fade
+{
+    0%
+    {
+        background-color: rgba(255, 255, 255, 1);
+    }
+    100%
+    {
+        background-color: var(--bg-color);
+    }
+}
+@-moz-keyframes ball-fade
+{
+    0%
+    {
+        background-color: rgba(255, 255, 255, 1);
+    }
+    100%
+    {
+        background-color: var(--bg-color);
+    }
+}
+@-o-keyframes ball-fade
+{
+    0%
+    {
+        background-color: rgba(255, 255, 255, 1);
+    }
+    100%
+    {
+        background-color: var(--bg-color);
+    }
+}
+@keyframes ball-fade
+{
+    0%
+    {
+        background-color: rgba(255, 255, 255, 1);
+    }
+    100%
+    {
+        background-color: var(--bg-color);
+    }
+}
+.TabOnVA-loader{
+  display: inline-block;
+  margin-left: 0px;
+  margin-top: auto;
+  padding: 10px 20px;
+  background: transparent;
+  vertical-align: middle;
+  text-align: left;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.TabOnVA-Info-Zone {
+	background-color: transparent; 
+	height: 16px;
+    margin: auto;
+	padding-left: 4px; 
+	padding-right: 4px;
+	padding-top: 2px; 
+	padding-bottom: 2px;
+	font-family: var(--TabOnVA-default-font);
+	font-size: 10px;
+}
+.TabOnVA-Message-Zone {
+	position: fixed;
+	height: 12px;
+	bottom: 0; left: 0;
+	vertical-align: bottom;
+	background-color: transparent;
+    margin-bottom: 4px;
+	padding-left: 4px; 
+	padding-right: 4px;
+	padding-top: 2px; 
+	padding-bottom: 0px;
+	font-family: var(--TabOnVA-default-font);
+	font-size: 10px;
+}
+.TabOnVA-ExpMenu-Zone {
+    display:inline-block;
+    background-color: transparent;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border: 1px;
+}
+.TabOnVA-Button {
+    border-radius: 3px;
+    background-color: var(--TabOnVA-button-bg-color);
+    box-shadow: 1px 1px 1px 0px var(--TabOnVA-button-bg-color);
+    border: none;
+    color: var(--TabOnVA-button-txt-color);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: var(--TabOnVA-default-font);
+    font-size: 12px;
+    margin-top: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.TabOnVA-Button:hover {
+    background-color: var(--TabOnVA-button-bg-color-hover);
+    color: var(--TabOnVA-button-txt-color);
+}
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.TabOnVA-NonEditable{
+    opacity: 0.80;
+    /*background-color: var(--TabOnVA-column-non-editable);*/ 
+    /*color: var(--TabOnVa-ConfBox-gray-color); */
+    cursor: no-drop;
+}
+
+#confirmOverlay{
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    background: -moz-linear-gradient(rgba(11,11,11,0.1), rgba(11,11,11,0.6)) repeat-x rgba(11,11,11,0.2);
+    background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(11,11,11,0.1)), to(rgba(11,11,11,0.6))) repeat-x rgba(11,11,11,0.2);
+    z-index: inherit auto;
+  }
+
+  #confirmBox{
+      width: 25%;
+      margin: auto;
+      position:absolute;
+      left:37.5%; /* (100-width)/2*/
+      top:10%;
+      border: 1px solid rgba(33, 33, 33, 0.6);
+      background-color: var(--TabOnVa-ConfBox-bg-color);
+      -moz-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+      -webkit-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+      box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+  }
+
+  #confirmBox h1{
+    font:16px/1 var(--TabOnVA-default-font);
+    /*background-color:#a3a3a3;*/
+    font-weight: bold;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: var(--TabOnVa-ConfBox-txt-color);
+    letter-spacing:0.3px;
+  }
+  #confirmBox hr {
+      display: block;
+      height: 1px;
+      border: 0;
+      border-top: 1px solid #bbbbbb;
+      margin: 1em 0;
+      padding: 0;
+  }
+
+  #confirmBox p{
+    font: 12px/1 var(--TabOnVA-default-font);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    text-decoration: none;
+      color: var(--TabOnVa-DlgBox-main-color);
+      font-size:12px;
+      line-height:1.4;
+      padding-top: 10px;
+  }
+
+  #confirmButtons{
+      padding:25px 0 25px;
+      text-align:center;
+  }
+  #confirmButtons .button:hover {
+      background-color: var(--TabOnVa-DlgBox-main-color);
+      color: var(--TabOnVA-button-txt-color);
+  }
+
+  #confirmBox .button{
+    display:inline-block;
+    border-radius: 4px;
+    background-color: var(--TabOnVa-ConfBox-blue-color);
+    box-shadow: 1px 1px 0px 0px var(--TabOnVa-ConfBox-blue-color);
+    border: 1px;
+    color: var(--TabOnVA-button-txt-color);
+    padding-top: 10px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    margin-top: 4px;
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    width: 25%;
+  }
+
+  #confirmBox .blue{ background-color: var(--TabOnVa-ConfBox-blue-color);}
+  #confirmBox .gray{ background-color: var(--TabOnVa-ConfBox-gray-color);}
+
+/* style definition for JQueryUI
+
+	https://api.jqueryui.com/selectmenu/#theming 
+	https://www.w3cschool.cn/doc_jqueryui/jqueryui-selectmenu.html
+*/
+fieldset {
+	border-top-width: 0;
+	border-right-width: 0;
+	border-bottom-width: 1px;
+	border-left-width: 0;
+	margin-left: 0px;
+}
+.menu-overflow {
+    height: 300px;
+}
+
+.ui-selectmenu-button {
+	width: auto !important;
+	height: 12px !important;
+}
+
+.ui-selectmenu-text{
+	font-family: var(--TabOnVA-default-font);
+    font-size: 10px;
+	font-weight: bold;
+}
+.ui-selectmenu-menu .ui-menu-item {
+    font-family: var(--TabOnVA-default-font);
+    font-size: 10px;
+    font: 10px/1 var(--TabOnVA-default-font);
+}
+.ui-selectmenu-option_class {
+    font: 10px/1 var(--TabOnVA-default-font);
+    font-family: var(--TabOnVA-default-font);
+    font-size: 10px;
+    color: var(--TabOnVa-DlgBox-button-color) !important;
+	/*width: auto !important;*/
+}
+.selectmenu-optgroup_class .ui-selectmenu-optgroup_class {
+    font: 11px/1 var(--TabOnVA-default-font);
+    font-family: var(--TabOnVA-default-font);
+    font-size: 11px ;
+    color: var(--TabOnVa-DlgBox-main-color) !important;
+	width: auto !important;
+}
+
+.no-close .ui-dialog-titlebar-close {
+  display: none;
+}
+.ui-button {
+    display:inline-block;
+    border-radius: 3px;
+    color: var(--TabOnVa-DlgBox-main-color);
+/*  background-color: #517993; */
+/*  box-shadow: 1px 1px 1px 0px #517993;*/
+    box-shadow: 1px 1px 0px 0px #a3a3a3; 
+/*    color: white; */
+    border: 1px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 4px;
+    padding-right: 4px;
+    text-align: center;
+    text-decoration: none;
+    font-family: var(--TabOnVA-default-font);
+    font-size: 12px !important;
+    margin-top: 4px;
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+/*
+.ui-button:hover {
+  background-color: var(--TabOnVa-DlgBox-main-color);;
+  color: white;
+}
+
+.ui-widget-header,.ui-state-default, ui-button {
+*/
+.ui-dialog .ui-dialog-title .ui-icon {
+    float: left;
+    background-image: url(../../cssjs/css/images/ui-icons_ffffff_256x240.png);
+    margin-right: 10px;
+}
+.ui-widget-header {
+    font:13px/1 var(--TabOnVA-default-font);
+    /*font-weight: bold;*/
+    text-align: center;
+    height: auto;
+    min-height: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: var(--TabOnVa-ConfBox-blue-color);
+    color: #f5f5f5;
+    text-shadow: 1px #d8d8d8;
+    letter-spacing:0.3px;
+}
+
+#jqUI-DlgBox p, label, select{
+    font: 12px/1 var(--TabOnVA-default-font);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--TabOnVa-DlgBox-main-color);
+    font-size: 12px !important;
+    line-height: 1.2;
+}
+
+#jqUI-DlgBox {
+    /*background-color: #d8d8d8;*/
+    -moz-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+    -webkit-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+}
+
+#jqUI-InputDlgBox p{
+    font: 12px/1 var(--TabOnVA-default-font);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--TabOnVa-DlgBox-main-color);
+    font-size: 12px !important;
+    line-height: 1.2;
+}
+
+#jqUI-InputDlgBox {
+    /*background-color: #d8d8d8;*/
+    -moz-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+    -webkit-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+}
+
+textarea {
+    font: 12px/1 var(--TabOnVA-default-font);
+    resize: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    spellcheck: default;
+}

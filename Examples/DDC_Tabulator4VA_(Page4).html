@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		
+		<!-- JQuery Framework  -->
+		<script type="text/javascript" src="../cssjs/js/jquery-2.2.3.min.js"></script>
+
+		<!-- FontAwesome Framework  -->
+		<link rel="stylesheet" type="text/css" href="../cssjs/css/fontawesome-all.min.css">
+		<script type="text/javascript" src="../cssjs/js/fontawesome-all.min.js" defer = false></script>
+
+		<!-- JQueryUI Framework  -->
+		<link rel="stylesheet" type="text/css" href="../cssjs/css/jquery-ui/base/jquery-ui.min.css">
+		<script type="text/javascript" src="../cssjs/js/jquery-ui.min.js"></script>
+
+		<!-- moment Framework (version 2.25.2) -->
+		<script type="text/javascript" src="../cssjs/js/moment-with-locales.min.js"></script>
+		
+		<!-- math Framework https://mathjs.org/download.html	-->
+		<script type="text/javascript" src="../cssjs/js/math.min.js"></script>
+		
+		<!-- string Framework https://github.com/jprichardson/string.js	-->
+		<script type="text/javascript" src="../cssjs/js/string.min.js"></script>
+		
+		<!-- XLSX Script Includes :> https://github.com/sheetjs/sheetjs	-->
+		<script type="text/javascript" src="../cssjs/js/xlsx.full.min.js"></script>
+		<!-- PDF Script Includes
+			jspdf library :> https://github.com/MrRio/jsPDF
+			jspdf-AutoTable plugin to jspdf :> https://github.com/simonbengtsson/jsPDF-AutoTable	
+		-->		
+		<script type="text/javascript" src="../cssjs/js/jspdf.min.js"></script>
+		<script type="text/javascript" src="../cssjs/js/jspdf.plugin.autotable.min.js"></script>
+		
+		<!-- Tabulator Framework (version 4.8) | the CSS includes the standard look and feel, others can be used -->
+		<link rel="stylesheet" type="text/css" href="../cssjs/css/tabulator_simple.min.css">
+		<script type="text/javascript" src="../cssjs/js/tabulator.min.js"></script>
+
+		<!-- SAS Libraries to handle table cell edition via encapsulated Tabulator -->
+		<link href="./css/Tabulator4VA_Styles.min.css" rel="stylesheet"></script>
+		<script type="module" src="./js/Tabulator4VA_Libs-min2.js" defer></script>
+	</head>
+	<!-- ================================================================================================== -->
+	<body>
+		<div class= "tabulator" id="TabulatorTable">
+			<div class="loader"> <i class="fa fa-spinner fa-pulse fa-2x fa-fw fa-spin"></i>
+				<div>&nbsp;Loading ...</div>
+			</div>
+		</div>
+		<div id="tabulator-footer" > <!-- this will be outside the tabulator region -->
+			<button id="save2Disk" class ="TabOnVA-Button" >
+				<i class="fas fa-server" aria-hidden="true"></i>&nbsp;Save on Disk&nbsp;</button>
+
+			<button id="history-undo" class ="TabOnVA-Button" >
+				<i class="fas fa-undo-alt" aria-hidden="true"></i>&nbsp;Undo&nbsp;</button>
+
+			<button id="history-redo" class ="TabOnVA-Button" >
+				<i class="fas fa-redo-alt" aria-hidden="true"></i>&nbsp;Redo&nbsp;</button>
+
+			<button id="saveChanges"class ="TabOnVA-Button" >
+				<i class="fas fa-memory" aria-hidden="true"></i>&nbsp;Save&nbsp;</button>
+			<span id = "NumChanges"
+				style=" background: transparent; width: 75%;
+						padding-left: 4px; padding-right: 4px;
+						padding-top: 2px; padding-bottom: 2px;
+						font-family: Arial,Helvetica,sans-serif; font-size: 12px;">
+			</span>
+			<span id = "NumRows"
+				style=" background: transparent;
+						display:block; float:right;
+						vertical-align: top;
+						padding-left: 4px; padding-right: 4px;
+						padding-top: 2px; padding-bottom: 2px;
+						font-family: Arial,Helvetica,sans-serif; 
+						font-size: 14px; font-weight:bold;">#Rows:&nbsp;</span>
+		</div>
+		<!-- this will be outside the tabulator region -->
+		<div id="Information"
+			style="position: fixed;
+					bottom: 0; left: 0;
+					background-color: transparent;
+					padding-left: 4px; padding-right: 4px;
+					padding-top: 2px; padding-bottom: 2px;
+					font-family: Arial,Helvetica,sans-serif; font-size: 10px;">
+		</div>
+
+	<!-- ============================================================================================= -->
+		<script type="text/javascript">
+            'use strict';
+//=======================================================================================================
+
+//=======================================================================================================
+//			OnLoad and OnUnload functions
+//=======================================================================================================
+			// $( document ).ready(function() { console.log( "Document ready!" ); });
+            window.onload = function ()
+            {
+                console.log("window.onload");
+                var Tab4VA = new TabulatorOnVA(
+								{ // DOMElements
+									TabulatorDiv: "TabulatorTable",
+									MessageArea : "Information",
+									NbChanges   : "NumChanges",
+									NbRows		: "NumRows",
+									ButtonUndo  : "history-undo",
+									ButtonRedo  : "history-redo",
+									ButtonSave  : "saveChanges",
+									Button2Disk : "save2Disk",
+								},
+								{ // Params. These WOULD BE OVERWRITTEN by the values passed on the URL
+									Pagination  : 100,
+									UseDecimals : true,			// true | false | "true" | "false" | 0 | 1 | yes | no
+									Save2Disk 	: false,		// true | false | "true" | "false" | 0 | 1 | yes | no
+									//===== These aren't available via URL
+									// this rules the behaviour										
+									defaultBehaviour: "editable",	// 'read-only' or 'editable'
+									// this rules if we validate the table on (re)loader
+									ValidateTable : true, 			// true | false | "true" | "false" | 0 | 1 | yes | no
+									CtrlFileReadFrom: 3, 			// 1 = container .ctrl.zip | 2 = single .ctrl.json | 3 = File .meta.ctrl.json,
+									// the defined in Control file overwrites OnSaveMode <= Overall, <= Report Level <= Table Level
+									OnSaveMode: 1,					// 1 = independent | 2 = ask to Persist | 3 = combined (save in memory then persist changes)
+									// https://viya-server:port, ex:. https://viyawaves.sas.com:5057/
+									ViyaServer  : "https://viyawaves.sas.com/",
+									// full viya path for the job execution program including the program name
+									JobExecProg : "/Public/VATableEditor/AddRows2Table",
+									JobExecUID	: "/jobDefinitions/definitions/8c3ba97c-af0b-483f-8b20-e5be2bc5332b",
+									// parameters to be passed on the _action variable (ex.: "form,execute" | "execute" | "background")
+									JobExecParams: "execute",
+									// name of the parameter === to the variable receiving the JSON with the changes
+									JobExecJSonVar: "_ActionData",
+								});
+
+			    window.Tab4VA = Tab4VA;
+			};
+
+			//==========================================================================
+			// On UnLoad the page... Exit tasks like releasing memory, closing CAS Session
+			//==========================================================================
+            window.onunload = function ()
+            {   console.log("onunload");
+                Tab4VA.Exit();
+            };
+//=======================================================================================================
+//=======================================================================================================
+
+		</script>
+
+	</body>
+
+</html>

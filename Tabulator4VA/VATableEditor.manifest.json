@@ -1,0 +1,12 @@
+{
+  "name": "SAS Visual Analytics TableEditor",
+  "short_name": "VATableEditor",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "A VA plug-in to, securely edit tables.. and much more things.",
+  "related_applications": [{
+    "platform": "play",
+    "url": "https://www.sas.com/en_us/software/visual-analytics.html"
+  }]
+}

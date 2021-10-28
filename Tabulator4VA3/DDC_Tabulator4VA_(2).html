@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="manifest" href="./VATableEditor.manifest.json">
+		
+		<!-- JQuery Framework  -->
+		<script type="text/javascript" src="../cssjs/js/jquery-2.2.3.min.js"></script>
+
+		<!-- FontAwesome Framework  -->
+		<link rel="stylesheet" type="text/css" href="../cssjs/css/fontawesome-all.min.css">
+		<script type="text/javascript" src="../cssjs/js/fontawesome-all.min.js"></script>
+
+		<!-- JQueryUI Framework  -->
+		<link rel="stylesheet" type="text/css" href="../cssjs/css/jquery-ui/base/jquery-ui.min.css">
+		<script type="text/javascript" src="../cssjs/js/jquery-ui.min.js"></script>
+
+		<!-- moment Framework (version 2.25.2) -->
+		<script type="text/javascript" src="../cssjs/js/moment-with-locales.min.js"></script>
+
+		<!-- SAS Libraries to handle table cell edition via encapsulated Tabulator -->
+		<!-- Tabulator Framework (version 4.9) | the CSS includes the standard look and feel, others can be used -->
+		<link rel="stylesheet" type="text/css" href="../cssjs/css/tabulator_simple.min.css">
+		<link href="./css/Tabulator4VA_Styles.min.css" rel="stylesheet"></script>
+		<script type="module" src="./js/Tabulator4VA_Libs-min2.js"></script>
+		
+	</head>
+<!-- ================================================================================================== -->
+	<body>
+		<div class= "tabulator" id="TabulatorTable">
+			<!-- <div class="TabOnVA-loader">Loading&nbsp; -->
+				<div TabOnVA-loading="ball-fade">
+					<!-- <div class="loader"> <i class="fa fa-spinner fa-pulse fa-2x fa-fw fa-spin"></i> -->
+					<!-- <i class="fa fa-spinner fa-pulse fa-fw fa-spin"></i> -->
+					<!-- <div> Loading ...</div> -->
+				</div> 
+			<!-- </div> -->
+			<!-- this will embeded the buttons on the tabulator region as footer class MUST BE "tabulator-footer" -->
+			<div id="VATableEditor-Buttons" class="tabulator-footer" align= "left"> 
+				<span id="ButtonsArea" style="background: transparent; display:block; float:left;">
+					<button id="save2Disk" class ="TabOnVA-Button" >
+						<i class="fas fa-server" aria-hidden="true"></i>&nbsp;Save on Disk&nbsp;</button>
+
+					<button id="history-undo" class ="TabOnVA-Button" >
+						<i class="fas fa-undo-alt" aria-hidden="true"></i>&nbsp;Undo&nbsp;</button>
+
+					<button id="history-redo" class ="TabOnVA-Button" >
+						<i class="fas fa-redo-alt" aria-hidden="true"></i>&nbsp;Redo&nbsp;</button>
+
+					<button id="saveChanges"class ="TabOnVA-Button" >
+						<i class="fas fa-memory" aria-hidden="true"></i>&nbsp;Save&nbsp;</button>
+				</span>
+			</div>
+		</div> 
+
+		<!-- this will be outside the tabulator region -->
+		<div id="Information1" class ="TabOnVA-Info-Zone">	
+			<span id = "NumChanges"
+				style=" display:block; float:left; overflow: hidden;
+						vertical-align: bottom !important; 
+						width: 80%;
+						padding-left: 8px; 
+						padding-top: 2px !important; 
+						padding-bottom: 2px;
+						margin-top:  2px !important; 
+						margin-left: 2px;
+						margin-bottom: 2px;
+						font-family: Arial,Helvetica,sans-serif; 
+						font-size: 12px;">
+			</span>
+			<span id = "NumRows"
+				style=" background: transparent;
+						display:block; float:right;
+						vertical-align: text-top;
+						padding-left: 4px; padding-right: 4px;
+						padding-top: 2px; padding-bottom: 2px;
+						font-family: Arial,Helvetica,sans-serif; 
+						font-size: 14px; font-weight:bold;">#Rows:&nbsp;</span>
+		</div>
+		<div id="Information" class="TabOnVA-Message-Zone">
+
+		</div>
+
+	<!-- ============================================================================================= -->
+		<script type="text/javascript">
+            'use strict';
+//=======================================================================================================
+
+//=======================================================================================================
+//			OnLoad and OnUnload functions
+//=======================================================================================================
+            window.onload = function ()
+            {
+				console.log("*".repeat(57));
+				console.log("*".repeat(16), "VATableEditor-Constructor", "*".repeat(16));
+				console.log("*".repeat(57));
+                var Tabulator4VA = new TabulatorOnVA(
+									{ // DOMElements
+										ExportMenuDiv: "ExportMenu",
+										TabulatorDiv: "TabulatorTable",
+										// Informative area
+                                        MessageArea : "Information",
+										InfoArea	: "Information1",
+                                        NbChanges   : "NumChanges",
+										NbRows		: "NumRows",
+										// Buttons area ... do not define <div > 
+										// if to include buttons on the Tabulator area
+										ButtonsArea	: "ButtonsArea",
+										// buttons 
+                                        ButtonUndo  : "history-undo",
+                                        ButtonRedo  : "history-redo",
+										ButtonSave  : "saveChanges",
+										Button2Disk : "save2Disk",
+										// Define <div > <span > (buttons) </span> </div>
+										// if to include buttons on the Tabulator area
+										FooterElem	: "VATableEditor-Buttons",
+									},
+									{ // Params.
+										//These WOULD BE OVERWRITTEN by values passed on the URL
+										Pagination  : 50,
+										UseDecimals : false,	// true | false | "true" | "false" | 0 | 1 | yes | no
+										Save2Disk 	: true,		// true | false | "true" | "false" | 0 | 1 | yes | no
+										//===== These aren't available via URL
+										//ReportUID	: "20a56311-874b-450a-a679-4963b7a1b419",
+										// this rules the behaviour ... if 'read-only' or 'editable'
+										defaultBehaviour: "editable",
+										// this allow to show or not a TOAST msgBox on some errors (serious ones...)
+										showToastOnErrors: false,	// default = false => does not show it ... 
+										// this rules if we validate the table on (re)loader
+										ValidateTable : false, 	// true | false | "true" | "false" | 0 | 1 | yes | no
+										// this determine from where and how the control files are available
+										CtrlFileReadFrom: 3, 	// 1 = container .ctrl.zip | 2 = single .ctrl.json | 3 = File .meta.ctrl.json,
+										// the defined in Control file overwrites OnSaveMode <= Overall, <= Report Level <= Table Level
+										OnSaveMode: 1,			// 1 = independent | 2 = ask to Persist | 3 = combined (save in memory then persist changes)
+										// If VATableEditor should force Report to be reopened ...  THIS will invalidates the DDC auto-refresh
+										ReopenReportOnTableChanges : false, // Boolean .. 0 = not used | 1 = reopen ...
+										// if force the report to be in a maximized browser window.
+										OpenInFullScreen : false, 	// Boolean .. Default = false
+										// If recover the pending changes in case of report reopening or abrupt closing and opening
+										RecoverUnSavedChanges : 1, // 0 do not recover | 1 recover changes not saved
+										// If we ask for a Reasoning for changes ... value indicates minimum length .. if 0 => false => no ask 
+										GetReasonForChanges : 0,
+										// Max number of pings to determine the state os a called Service, e.g. a JobExecution
+										ExtSrvStatusMaxPings : 100,	// default is 30
+										// acceptable number of millisecods for considering that a Table modif is the same as the changes registered
+										TableModifDelta: 100,		// default is 100 ms!! this requires RecoverUnSavedChanges = 1
+										// https://viya-server:port, ex:. https://viyawaves.sas.com:5057/
+										//ViyaServer  : "https://viyawaves.sas.com/",	// if not defined, window.location is used
+										// full viya path for the job execution program including the program name
+										JobExecProg : "/Public/VATableEditor/AddRows2Table",
+										JobExecUID	: "/jobDefinitions/definitions/8c3ba97c-af0b-483f-8b20-e5be2bc5332b",
+										// parameters to be passed on the _action variable (ex.: "form,execute" | "execute" | "background")
+										JobExecParams: "execute",
+										// name of the parameter === to the variable receiving the JSON with the changes
+										JobExecJSonVar: "_ActionData",
+									}); //new TabulatorOnVA
+
+			    window.Tabulator4VA = Tabulator4VA;
+			};
+
+			//==========================================================================
+			// On UnLoad .. Exit tasks like releasing memory, closing CAS Session
+			//==========================================================================
+			/*
+            window.onunload = function (event)
+            {   console.log("VATableEditor-Destructor");
+                Tabulator4VA.Exit(event); // it's called by the VATableEditor if not called from here
+            };
+			*/
+//=======================================================================================================
+//=======================================================================================================
+		</script>
+
+	</body>
+
+</html>

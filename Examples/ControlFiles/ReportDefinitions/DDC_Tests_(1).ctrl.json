@@ -1,0 +1,312 @@
+{
+	"crtlInfo": {
+		"version": 1,
+		"creationDate": "01Oct2020 12:50",
+		"createdBy": "porjoo",
+		"lastModifDate": "01Oct2020 12:50",
+		"lastModifBy": "porjoo"
+	},
+	"casServer": "cas-shared-default",
+	"reportID": [
+		"b81818ed-ef37-4999-b19e-aaa1bde4a52a"
+	],
+	"defaultBehaviour" : "read-only",
+	"validUsers": {
+		"groups": [
+			"PTPowerUsers",
+			"PTProjectShare",
+			"BEPowerUsers",
+			"BEProjectShare",
+			"NLPowerUsers",
+			"NLProjectShare",
+			"FRPowerUsers",
+			"FRProjectShare",
+			"SPPowerUsers",
+			"SPProjectShare",
+			"ukipowerusers",
+			"ukisupportusers"
+		],
+		"users": [
+			"porjoo",
+			"stest4",
+			"snlref",
+			"snlysy",
+			"sasdemo",
+			"sukdhs",
+			"frajoz",
+			"frascb",
+			"sbxjej",
+			"snlbad"
+		]
+	},
+	"modules": {
+		"cellChanges": true,
+		"history": true,
+		"saveChanges": true,
+		"save2Disk": true,
+		"addRows": true,
+		"deleteRows": true,
+		"updtColVal": true,
+		"download": true,
+		"downloadCSV": true,
+		"downloadPDF": true,
+		"downloadJSON": true,
+		"downloadXLSX": true,
+		"downloadHTML": true,
+		"printing": true,
+		"clipboard": true,
+		"calculator": true,
+		"logger": true
+	},
+	"notMappedColumnsDefaults": {
+		"name": "unknown",
+		"editable": false,
+		"visible": false,
+		"onDownload": true,
+		"onPrint": true,
+		"onClipboard": true,
+		"calculator": false,
+		"validation": {
+			"required": false,
+			"formula": null,
+			"default": null,
+			"min": null,
+			"max": null,
+			"minLength": null,
+			"maxLength": null,
+			"in": null,
+			"starts": null,
+			"ends": null,
+			"regex": null
+		}
+	},
+	"dataSources": [
+		{
+			"casLib": "public",
+			"casTable": "DATARETAIL_TST",
+			"validateOnLoad" : true,
+			"trackChanges" : true,
+			"columnDefaults": {
+				"primaryKey": false,
+				"editable": true,
+				"visible": true,
+				"onDownload": true,
+				"onPrint": true,
+				"onClipboard": true,
+				"calculator": true,
+				"validation": {
+					"required": true,
+					"formula": null,
+					"default": null,
+					"min": null,
+					"max": null,
+					"minLength": null,
+					"maxLength": null,
+					"in": null,
+					"starts": null,
+					"ends": null,
+					"regex": null
+				}
+			},
+			"columns": [
+				{
+					"name": "biz_unit_cd"
+				},
+				{
+					"name": "biz_unit_dsc",
+					"headerFilter": true,
+					"editorSelect": {
+						"from": "self",
+						"values": "auto",
+						"sortValuesList": "asc",
+						"useOnHeaderFilter": true
+					}
+				},
+				{
+					"name": "cat_cd"
+				},
+				{
+					"name": "cat_dsc",
+					"headerFilter": true,
+					"editorSelect": {
+						"from": "self",
+						"values": "auto",
+						"sortValuesList": "asc",
+						"useOnHeaderFilter": true
+					}
+				},
+				{
+					"name": "gross_sls_amt_eur"
+				},
+				{
+					"name": "item",
+					"editable": true
+				},
+				{
+					"name": "product_dsc",
+					"headerFilter": true,
+					"editorSelect": {
+						"from": "table",
+						"values": {
+							"casLib": "public",
+							"casTable": "DATARETAIL_TST",
+							"tableColumn": "product_dsc",
+							"maxItems": 100
+						},
+						"sortValuesList": "asc",
+						"useOnHeaderFilter": true
+					}
+				},
+				{
+					"name": "qty",
+					"validation": {
+						"default": 1,
+						"min": 0,
+						"max": 1000
+					}
+				},
+				{
+					"name": "subcat_cd"
+				},
+				{
+					"name": "subcat_dsc_new",
+					"editorSelect": {
+						"from": "self",
+						"values": "auto",
+						"sortValuesList": "asc"
+					}
+				},
+				{
+					"name": "time_key"
+				},
+				{
+					"name": "user",
+					"editable": false
+				},
+				{
+					"name": "rowUID",
+					"primaryKey": true
+				}
+			]
+		},
+		{
+			"casLib": "public",
+			"casTable": "SNACKS",
+			"validateOnLoad" : true,
+			"trackChanges" : true,
+			"columnDefaults": {
+				"primaryKey": false,
+				"editable": true,
+				"visible": true,
+				"onDownload": true,
+				"onPrint": true,
+				"onClipboard": true,
+				"calculator": true,
+				"validation": {
+					"required": true,
+					"formula": null,
+					"default": null,
+					"min": null,
+					"max": null,
+					"minLength": null,
+					"maxLength": null,
+					"in": null,
+					"starts": null,
+					"ends": null,
+					"regex": null
+				}
+			},
+			"columns": [
+				{
+					"name": "Frequency",
+					"visible": true
+				},
+				{
+					"name": "Advertised",
+					"headerFilter": true,
+					"editorSelect": {
+						"from": "list",
+						"values": [
+							"0",
+							"1"
+						],
+						"sortValuesList": null,
+						"useOnHeaderFilter": true
+					},
+					"validation": {
+						"default": 0,
+						"min": 0,
+						"max": 1,
+						"regex": "^[0,1]$"
+					}
+				},
+				{
+					"name": "Date",
+					"headerFilter": true,
+					"validation": {
+						"default": {
+							"date": "10/01/2020",
+							"format": "DD/MM/YYYY"
+						}
+					}
+				},
+				{
+					"name": "Holiday",
+					"headerFilter": true,
+					"editorSelect": {
+						"from": "list",
+						"values": {
+							"0": "No",
+							"1": "Yes"
+						},
+						"sortValuesList": null,
+						"defaultValue": "No",
+						"useOnHeaderFilter": true
+					},
+					"validation": {
+						"default": 0,
+						"min": 0,
+						"max": 1,
+						"regex": "^[0,1]$"
+					}
+				},
+				{
+					"name": "Product",
+					"headerFilter": true,
+					"editorSelect": {
+						"from": "table",
+						"values": {
+							"casLib": "public",
+							"casTable": "SNACKS",
+							"tableColumn": "Product",
+							"maxItems": 100
+						},
+						"sortValuesList": "asc",
+						"useOnHeaderFilter": true
+					},
+					"validation": {
+						"minLength": 1,
+						"maxLength": 32
+					}
+				},
+				{
+					"name": "Price"
+				},
+				{
+					"name": "Unique_ID",
+					"headerFilter": true,
+					"primaryKey": true,
+					"visible": true
+				},
+				{
+					"name": "QtySold",
+					"validation": {
+						"default": 1,
+						"min": 0,
+						"max": 1000
+					}
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,210 @@
+{
+	"crtlInfo": {
+		"version": 2,
+		"creationDate": "10Dec2020 12:00",
+		"createdBy": "porjoo",
+		"lastModifDate": "10Dec2020 12:00",
+		"lastModifBy": "porjoo"
+	},
+	"casServer": "cas-shared-default",
+	"reportID": [
+		"20a56311-874b-450a-a679-4963b7a1b419",
+		"cc761f02-2b58-43f0-a73c-c7fb0767c2ad"
+	],
+	"defaultBehaviour": "editable",
+	"trackChanges": true,
+	"OnSaveMode": 1,
+	"validUsers": {
+		"groups": [
+			"PTPowerUsers",
+			"PTProjectShare",
+			"BEPowerUsers",
+			"BEProjectShare",
+			"NLPowerUsers",
+			"NLProjectShare",
+			"FRPowerUsers",
+			"FRProjectShare",
+			"SPPowerUsers",
+			"SPProjectShare",
+			"ukipowerusers",
+			"ukisupportusers"
+		],
+		"users": [
+			"porjoo",
+			"stest4",
+			"snlref",
+			"snlysy",
+			"sasdemo",
+			"sukdhs",
+			"frajoz",
+			"frascb",
+			"sbxjej",
+			"snlbad"
+		]
+	},
+	"modules": {
+		"cellChanges": true,
+		"history": true,
+		"saveChanges": true,
+		"save2Disk": true,
+		"addRows": true,
+		"deleteRows": true,
+		"updtColVal": true,
+		"download": true,
+		"downloadCSV": true,
+		"downloadPDF": true,
+		"downloadJSON": true,
+		"downloadXLSX": true,
+		"downloadHTML": true,
+		"printing": true,
+		"clipboard": true,
+		"calculator": true,
+		"logger": true
+	},
+	"notMappedColumnsDefaults": {
+		"name": "unknown",
+		"editable": false,
+		"visible": false,
+		"onDownload": true,
+		"onPrint": true,
+		"onClipboard": true,
+		"calculator": false,
+		"validation": {
+			"required": false,
+			"formula": null,
+			"default": null,
+			"min": null,
+			"max": null,
+			"minLength": null,
+			"maxLength": null,
+			"in": null,
+			"starts": null,
+			"ends": null,
+			"regex": null
+		}
+	},
+	"dataSources": [
+		{
+			"casLib": "public",
+			"casTable": "SNACKS",
+			"validateOnLoad": true,
+			"trackChanges": true,
+			"OnSaveMode": 2,
+			"columnDefaults": {
+				"primaryKey": false,
+				"editable": true,
+				"visible": true,
+				"onDownload": true,
+				"onPrint": true,
+				"onClipboard": true,
+				"calculator": true,
+				"validation": {
+					"required": true,
+					"formula": null,
+					"default": null,
+					"min": null,
+					"max": null,
+					"minLength": null,
+					"maxLength": null,
+					"in": null,
+					"starts": null,
+					"ends": null,
+					"regex": null
+				}
+			},
+			"columns": [
+				{
+					"name": "Frequency",
+					"visible": true
+				},
+				{
+					"name": "Advertised",
+					"headerFilter": true,
+					"editorSelect": {
+						"from": "list",
+						"values": [
+							0,
+							1
+						],
+						"sortValuesList": "asc",
+						"useOnHeaderFilter": true
+					},
+					"validation": {
+						"default": 0,
+						"min": 0,
+						"max": 1,
+						"regex": "^[0,1]$"
+					}
+				},
+				{
+					"name": "Date",
+					"validation": {
+						"default": {
+							"date": "10/01/2020",
+							"format": "DD/MM/YYYY"
+						},
+						"min": "01/01/2002",
+						"max": "31/12/2019"
+					}
+				},
+				{
+					"name": "Holiday",
+					"headerFilter": true,
+					"editorSelect": {
+						"from": "list",
+						"values": {
+							"0": "No",
+							"1": "Yes"
+						},
+						"sortValuesList": "asc",
+						"defaultValue": "No",
+						"useOnHeaderFilter": true
+					},
+					"validation": {
+						"default": 0,
+						"min": 0,
+						"max": 1,
+						"regex": "^[0,1]$"
+					}
+				},
+				{
+					"name": "Product",
+					"headerFilter": true,
+					"editorSelect": {
+						"from": "table",
+						"values": {
+							"casLib": "public",
+							"casTable": "SNACKS",
+							"tableColumn": "Product",
+							"maxItems": 100
+						},
+						"sortValuesList": "asc",
+						"useOnHeaderFilter": true,
+						"autocomplete": true
+					},
+					"validation": {
+						"minLength": 1,
+						"maxLength": 48
+					}
+				},
+				{
+					"name": "Price",
+					"editable": true
+				},
+				{
+					"name": "Unique_ID",
+					"primaryKey": true,
+					"visible": true
+				},
+				{
+					"name": "QtySold",
+					"validation": {
+						"default": 1,
+						"min": 0,
+						"max": 15
+					}
+				}
+			]
+		}
+	]
+}
